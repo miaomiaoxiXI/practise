@@ -1,0 +1,26 @@
+/* 弹出框的样式 */
+.ui.popup.bottom.left.transition.visible {
+    padding: 1px;
+}
+
+.ui.popup.bottom.left.transition.visible .options ul {
+    list-style: none; 
+    padding-left:15px!important;
+}
+.ui.popup.bottom.left.transition.visible .options ul li {
+    margin-top:10px; 
+}
+
+.ui.popup.bottom.left.transition.visible .ui.button {
+    background-color: white;
+    color: rgba(54, 156, 252, 0.555);
+    font-size: 16px;
+}
+
+/* 改变复选框的字体颜色 */
+.ui.checkbox input:checked~.box:after, .ui.checkbox input:checked~label:before {
+    color:rgba(54, 156, 252, 0.555) !important;
+}
+.ui.checkbox input:checked~.box:after, .ui.checkbox input:checked~label:after {
+    color:rgba(54, 156, 252, 0.555) !important;
+}
