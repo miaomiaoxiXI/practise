@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="http://cdn.static.runoob.com/libs/angular.js/1.4.6/angular.min.js"></script>
+    <!-- <script
+    src="http://code.jquery.com/jquery-3.2.1.min.js"
+    integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+    crossorigin="anonymous"></script> -->
+    
+    <script src="./laydate/laydate.js"></script>
+    <script src="./anlay.js"></script>
+   
+</head>
+<body ng-app="myApp">
+    <input  def-laydate   ng-model="defTime" placeholder="yyyy-MM-dd"  />
+    <input  def-laydate   ng-model="yearTime" type-date="year" placeholder="yyyy"/>
+    <input  def-laydate   ng-model="monTime" type-date="month" placeholder="yy-MM" />
+    <input  def-laydate   ng-model="Time" type-date="time" placeholder="HH:mm:SS"/>
+    <input  def-laydate   ng-model="dateTime" type-date="datetime" placeholder="yyyy-MM-dd HH:mm:SS" />
+    <br/>
+    <br/>
+    
+    
+   选择范围：
+    <input def-laydate range="~" type="text"  ng-model="rTime"/>
+</body>
+</html>
