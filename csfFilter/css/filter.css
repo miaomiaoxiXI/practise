@@ -24,3 +24,5 @@
 .ui.checkbox input:checked~.box:after, .ui.checkbox input:checked~label:after {
     color:rgba(54, 156, 252, 0.555) !important;
 }
+
+.conts .btns{border-top:1px solid rgba(0, 0, 0, 0.137)}
