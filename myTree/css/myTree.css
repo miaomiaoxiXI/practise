@@ -1,0 +1,43 @@
+  .myTr{
+    list-style: none;
+  }
+  .myTree ul{
+    list-style: none;
+    margin-left:-27px;
+  }
+  .myTree .caret.right.icon.leafHide{
+      visibility: hidden;
+  }
+
+  .myTree .ui.checkbox .box:before, .ui.checkbox label:before{
+    width: 14px;
+    height: 14px;
+    border-radius: 0;
+  }
+
+  .myTree  i.icon, i.icons {
+    font-size: 0.5em;
+}
+.myTree .ui.checkbox input:checked~.box:before, .ui.checkbox input:checked~label:before{
+  background: #4385F5!important;   
+  border-color: #4385F5;
+  
+}
+.myTree .ui.checkbox input:checked~.box:after, .ui.checkbox input:checked~label:after{
+    content: '';
+    border: 1px solid #FFF;
+    border-top-width: 0;
+    border-right-width: 0;
+    width: 9px;
+    height: 5px;
+    transform: rotate(-45deg);
+    top:4px;
+    left:3px;
+}
+
+.myTr .ui.checkbox label{
+  cursor:pointer;
+}
+.disabled{
+  color:grey;
+}

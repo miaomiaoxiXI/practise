@@ -1,0 +1,14 @@
+<!-- <span class="color-indictor" ng-class="{'leaf-node': isLeaf(item), 'expand-node': !isLeaf(item) && item.isExpand, 'unexpand-node': !isLeaf(item) && !item.isExpand}" ng-click="toggleExpandStatus(item)"></span> -->
+<div class="myTree">
+    <i ng-class="{'caret right icon':!item.isExpand,'caret down icon':item.isExpand}" ng-show="!isLeaf(item)" ng-click="toggleExpandStatus(item)"></i>
+    <i class="caret right icon leafHide" ng-show="isLeaf(item)"></i>
+    <div class="ui checkbox" ng-if="options.isCheckbox">
+        <input type="checkbox" name="example" ng-disabled="item.disabled" ng-checked="item.checked" id={{item.id}} value={{item.id}}>
+        <label  for={{item.id}}>{{item.name}}</label>
+    </div>
+    <span ng-if="!options.isCheckbox" ng-class="{'disabled':item.disabled}">{{item.name}}</span>
+
+    <ul ng-if="!isLeaf(item)" ng-show="item.isExpand">
+        <li ng-repeat="item in item.children" ng-include="'template/treeItem.html'"></li>
+    </ul>
+</div>
