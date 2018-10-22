@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body ng-app="myApp" ng-controller="MainCtrl">
+    <h2>Inline Edit</h2>
+    <!--<input id="test" value="ddd"/>-->
+    <table>
+      <tr>
+        <th>name</th>
+        <th>phone</th>
+        <th></th>
+      </tr>
+      <tr ng-repeat="employee in employees">
+        <td class="dbclicktd">employee.name</td>
+        <td>employee.phone</td>
+      </tr>
+    </table>
+
+    <script src="http://cdn.static.runoob.com/libs/angular.js/1.4.6/angular.min.js"></script>
+    <script src="../public/jquery-3.2.1.min.js"></script>
+    <script src="../editTable/editTable.js"></script>
+    
+</body>
+</html>

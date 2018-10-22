@@ -1,0 +1,1 @@
+start java -cp lib/*;  xm.org.app.App

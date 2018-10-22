@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<config>
+	<web-name></web-name>
+	<web-config>config/web/web.xml</web-config>
+	<web-root>webapp</web-root>
+	<web-host>127.0.0.1</web-host>
+	
+	<web-http port="9999" timeout="30000" enable="true"/>
+	<web-https port="8888" timeout="30000" password1="123456" password2="123456" enable="true"/>
+
+	<web-virtualhost>
+		<!-- <vh>wwww.xmlayout.com</vh> -->
+	</web-virtualhost>
+</config>

@@ -1,0 +1,29 @@
+<link href="../../plugs/prism/prism.css" rel="stylesheet">
+<div class="xmlayout-in">
+	<span xmidx="1:1" style="font-size: 40px;">Panel 4</span>
+
+	<div xmidx="2:1;1:2;1:1">
+		<span style="font-size: 20px;">In panel 4, one features has been set using xmlayout.js as follow : </span>
+	</div>
+
+	<div xmidx="2:1;1:2;2:1">
+		<br/>
+			<span>1, Tools bar is disabled by setting : </span>
+<pre class="line-numbers" data-line="10"><code class="language-javascript">
+	var data = xm.element(10, true, true, null, [
+        xm.element(2, true, true, true),
+        xm.element(8, true, true, null, null, [
+            xm.element(8, true, true, null, [
+                xm.element(8, true, true, null, null, [
+                    xm.element(8, true, true, false),
+                    xm.element(5, true, true, true)
+                    ]),
+                xm.element(2, true, true, false)
+                ]),
+            xm.element(2, false, false, true)
+            ]),
+    ]);
+</code></pre>
+	</div>
+</div>
+<script src="../../plugs/prism/prism.js"></script>

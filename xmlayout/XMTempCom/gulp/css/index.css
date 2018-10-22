@@ -1,0 +1,110 @@
+* {
+  font-family: "Helvetica Neue";
+}
+html,
+body {
+  height: 100%;
+  width: 100%;
+  float: none;
+}
+.temp-com-header {
+  height: 50px;
+  width: 100%;
+  float: none;
+  background-color: #336666;
+  padding: 10px 0px 10px 10px;
+}
+.temp-com-body {
+  height: -moz-calc(100% - 50px);
+  height: -webkit-calc(100% - 50px);
+  height: calc(100% - 50px);
+}
+h4 > a {
+  text-decoration: none;
+}
+.list-group li {
+  padding-left: 50px;
+}
+ul > li:hover {
+  background-color: #F8F8FF;
+  cursor: pointer;
+}
+.xm-temp-panel1 {
+  height: 100%;
+  width: 100%;
+  float: none;
+}
+.xm-temp-panel2 {
+  transition: all 0.3s ease-in-out;
+  -webkit-transition: all 0.3s ease-in-out;
+  -moz-transition: all 0.3s ease-in-out;
+  border: #35a5e5 1px solid;
+  border-radius: 3px;
+  outline: none;
+  box-shadow: 0 0 6px #51cbee;
+  -webkit-box-shadow: 0 0 6px #51cbee;
+  -moz-box-shadow: 0 0 6px #51cbee;
+}
+.xm-temp-panel1 span {
+  font-size: 24px;
+  font-weight: bold;
+  top: -moz-calc(50% - 12px);
+  top: -webkit-calc(50% - 12px);
+  top: calc(50% - 12px);
+  left: -moz-calc(50% - 12px);
+  left: -webkit-calc(50% - 12px);
+  left: calc(50% - 12px);
+  position: relative;
+}
+.xm-temp-window1 {
+  height: 50%;
+  width: 50%;
+  float: none;
+  top: 25%;
+  left: 25%;
+  position: relative;
+}
+.xm-temp-window2 {
+  height: 100%;
+  width: 100%;
+  float: none;
+  top: 0px;
+  left: 0px;
+  position: relative;
+}
+.xm-temp-window3 {
+  height: 150%;
+  width: 150%;
+  float: none;
+  top: 0px;
+  left: 0px;
+  position: relative;
+}
+.xm-temp-window4 {
+  height: 600px;
+  width: 800px;
+  float: none;
+  top: -moz-calc(50% - 300px);
+  top: -webkit-calc(50% - 300px);
+  top: calc(50% - 300px);
+  left: -moz-calc(50% - 400px);
+  left: -webkit-calc(50% - 400px);
+  left: calc(50% - 400px);
+  position: relative;
+}
+.xm-temp-window5 {
+  height: 900px;
+  width: 1600px;
+  float: none;
+  top: 0px;
+  left: 0px;
+  position: relative;
+}
+.xm-temp-window6 {
+  height: 1080px;
+  width: 1920px;
+  float: none;
+  top: 0px;
+  left: 0px;
+  position: relative;
+}

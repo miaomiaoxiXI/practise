@@ -1,0 +1,9 @@
+欢迎您使用XMlayout.js
+
+demo包含四个项目，运行要求如下：
+
+1，XMTempComDiv ：双击XMTempComDiv/index.html即可运行；
+
+2，XMTempCom ：（1）基于XMframework创建，需要安装java 1.8，双击 XMTempCom/target/classes/start.bat启动服务，在浏览器中输入 http://localhost:9999 运行；（2）将XMTempCom Maven项目导入Myeclipse、Netbeans或者Intellij IDEA中运行，详细信息见官网 XMframework；
+
+3，XMlayoutDemoDesign 和 XMlayoutDemoElement ：将目录拷贝到tomcat、apache、IIS等服务器，开启服务器，以tomcat为例，在浏览器中输入http://localhost:8080/XMlayoutDemoDesign 和http://localhost:8080/XMlayoutDemoElement 访问。
