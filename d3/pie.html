@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>饼状图</title>
+</head>
+<body>
+    <script src="../public/js/d3.min.js"></script>
+    <script>
+        //画布大小
+        var width=400;
+        var height=400;
+        //在body里添加一个SVG画布
+        var svg=d3.select("body")
+                    .append("svg")
+                    .attr("width",width)
+                    .attr("height",height);
+        //定义10种颜色的颜色比例尺
+        var color=d3.scale.category10();    
+        //饼状图的数据
+        var dataset=[30,10,43,55,13]
+
+        //定义布局进行数据转换
+        var pie=d3.layout.pie();
+        var piedata=pie(dataset) //得到转换后的数据
+        //console.log(piedata)
+
+        //定义生成器用于:计算转换后的数据的路径值
+        //这里用到的叫弧生成器,能够生成弧的路径，因为饼图的每一部分都是一段弧
+        var arc=d3.svg.arc() //弧生成器
+            .innerRadius(150) //设置外半径
+            .outerRadius(0)  //设置内半径，为0则中间没有空白
+
+        //在svg中添加图形元素
+        var arcs=svg.selectAll("g") //svg中的每个分组元素g用于存放一段弧相关的元素
+                .data(piedata)
+                .enter()
+                .append("g")
+                .attr("transform","translate("+(width/2)+","+(width/2)+")")
+        //对每个g添加path （通过定义一个段“路径”，来绘制各种图形）
+        arcs.append("path") //给arcs的5个g元素都添加path值
+            .attr("fill",function(d,i){
+                return color(i);
+            })
+            .attr("d",function(d){
+                return arc(d); //调用弧生成器，得到路径值
+            })
+        //在每一个弧中心添加文本
+        arcs.append("text")
+            .attr("transform",function(d){
+                return "translate("+arc.centroid(d)+")"; //arc.centroid能算出狐线的中心
+            })
+            .attr("text-anchor","middle")
+            .text(function(d){
+              return d.data;  //text()里面返回的是d.data而不是d!
+            })
+    </script>
+</body>
+</html>

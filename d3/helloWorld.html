@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>helloworld</title>
+    <style>
+     .axis path,.axis line{
+         fill:none;
+         stroke:black;
+         shape-rendering: crispEdges;
+     }
+     .axis text{
+         font-family: sans-serif;
+         font-size:11px;
+     }
+    </style>
+</head>
+<body>
+    <!-- update和enter-->
+    <p class="enter"></p>
+    <p class="enter"></p>
+     <!--update和exit-->
+     <p class="exit"></p>
+     <p class="exit"></p>
+    <!-- <p id="id1">tes1t</p>
+    <p>test2</p>
+    <p>test3</p>  
+    <svg>
+        <rect></rect>
+        <rect></rect>
+    </svg> -->
+    <script src="../public/js/d3.min.js"></script>
+    <script>
+        //创建画布
+       var svg=d3.select('body').append('svg').attr('width',400).attr('height',400).attr('color','red')
+       var rectHeight=25;
+       //矩形宽度
+       //var dataset = [ 250 , 210 , 170 , 130 , 90 ]; 
+       var dataset = [ 2.5 , 2.1 , 1.7 , 1.3 , 0.9 ];  //数据（表示矩形的宽度） 要用比例尺
+       //线性比例尺
+       var linear=d3.scale.linear()  
+                 .domain([d3.min(dataset),d3.max(dataset)]) //自定域
+                 .range([0,250]) //值域
+       //序数比例尺
+        //  var ordinal=d3.scale.ordinal()
+        //             .domain()
+        //             .range()
+
+       //在画布上画矩形
+       svg.selectAll('rect').data(dataset).enter().append("rect") //有数据而没有足够的图形元素，可用此方法添加元素。
+          .attr("x",20)
+          .attr("y",function(data,index){
+              return index*rectHeight;
+          })
+          .attr("width",function(d,i){
+              //return d; 不用线性比例尺
+              return linear(d) //用线性比例尺
+          })
+          .attr("height",rectHeight-2)
+
+          //知识点:动态效果
+          .attr("fill","red")
+          .transition() //启用动态效果
+          .duration(2000) //过渡的持续时间 2000ms
+          .ease("linear")  //过度的方式:linear circle elastic bounce
+          .delay(2000) //延迟的时间 2000ms（此函数可以对整体指定延时，也可以对个别指定延时）
+        //  .delay(function(d,i){
+        //      return 200*i
+        //  })
+          .attr("fill","green")
+        
+        //定义坐标轴:用D3中的坐标轴组件，在svg中生成组成坐标轴的元素  
+        var axis=d3.svg.axis()
+                 .scale(linear) //指定比例尺
+                 .orient('bottom') //指定刻度的朝向，bottom表示在坐标轴的下方显示
+                 .ticks(7) //指定刻度的数量
+        //在svg中添加坐标轴:在svg中添加一个分组元素，再将坐标轴的其他元素添加到这个里
+        svg.append("g").call(axis)  //call()将当前的选择集传作为参数传递给此函数 <--> axis(svg.append("g"))
+                       .attr("class","axis")
+                       .attr("transform","translate(20,130)")
+        
+        //实现简单的动态效果
+         var circle1=svg.append("circle")
+             .attr("cx",200)
+             .attr("cy",200)
+             .attr("r",45)
+             .attr("fill","green");
+         circle1.transition()
+               .duration(5000)
+               .attr("cx",300)
+               .attr("cy",300)
+               .attr("fill","red")
+               .attr("r",100)
+        //交互操作
+        circle1.on("click",function(){
+            console.log(d3.event) //当某个事件被监听到时，D3会把当前的事件存到d3.event对象
+        })
+
+        // Update和Enter(绑定数据数量 > 对应元素)
+        var dataEnter=[3,5,6,9];
+        var p=d3.select("body").selectAll(".enter");
+        var update=p.data(dataEnter); //获取update部分
+        var enter=update.enter();   //获取enter部分
+        update.text(function(d){ //update部分的处理:更新属性值（一般都是这样处理）
+          return "update"+d;
+        })
+        enter.append("p") //enter部分的处理:添加元素后赋予属性值
+             .text(function(d){   
+                return "enter"+d;
+             })
+        // Update和Exit（绑定数据数量 < 对应元素）
+         var dataExit=[666];
+         var p1=d3.select("body").selectAll(".exit");
+         var update1=p1.data(dataExit);
+         var exit=update1.exit();
+         update1.text(function(d){
+           return "update"+d;
+         })
+         exit.text(function(d){
+             return "exit"
+         })
+         exit.remove(); //exit的处理方法就是：删除于元素（remove）
+
+
+
+
+        
+     </script> 
+</body>
+</html>
