@@ -10,8 +10,8 @@
        <script src="../public/js/d3.min.js"></script>
        <script>
         //画布大小
-        var width=400;
-        var height=400;
+        var width=800;
+        var height=800;
         //在body里添加一个SVG画布
         var svg=d3.select("body")
                     .append("svg")
@@ -83,7 +83,7 @@
                     .attr("y2",function(d){return d.target.y})
           //更新节点坐标
           svg_nodes.attr("cx",function(d){return d.x;})
-                    .attr("cy",function(d){d.y;})
+                    .attr("cy",function(d){return d.y;})
 
           //更新文字坐标
           svg_texts.attr("x",function(d){return d.x})

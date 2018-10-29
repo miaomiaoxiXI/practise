@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>中国地图</title>
+</head>
+<body>
+        <script src="../public/js/d3.min.js"></script>
+        <script>
+            var width=1000;
+            var height=800;
+            var svg=d3.select("body")
+                   .append("svg")
+                   .attr("width",width)
+                   .attr("height",height)
+                   .append('g')
+                   .attr('transform','translate(100,100)')
+            
+            var color=d3.scale.category20();
+
+           //投影函数(将文件中的三维数据转换为二维的显示在网页上)
+           var projection=d3.geo.mercator()
+               .center([107,31]) //设定地图的中心位置。[107,31]指的是经纬度
+               .scale(800) //设定放大比例
+               .translate([width/2,height/2])  //设定平移
+
+           //定义地理路径生成器
+           var path=d3.geo.path()
+                 .projection(projection) //projection()是设定生成器的投影函数，把上面定义的投影传入即可，以后当使用此生成器计算路径时，会自己加入投影的影响 
+
+           //向服务器请求文件并绘制地图
+           d3.json("china.json",function(error,root){
+               if(error){
+                   return console.error(error)
+                   console.log(root.features)
+               }
+
+               svg.selectAll("path")
+                  .data(root.features)
+                  .enter()
+                  .append("path")
+                  .attr("stroke","#000")
+                  .attr("stroke-width",1)
+                  .attr("fill",function(d,i){
+                      return color(i);
+                  })
+                  .attr("d",path) //使用地理路径生成器
+                  .on("mouseover",function(d,i){
+                      d3.select(this)
+                        .attr("fill","yellow");
+                  })
+                  .on("mouseout",function(d,i){
+                      d3.select(this)
+                        .attr("fill",color(i))
+                  })
+                  .attr("d",path) //相当于  .attr("d",function(d){ return path(d)})     
+           })
+            
+        </script>
+    
+</body>
+</html>
