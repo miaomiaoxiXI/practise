@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html> 
+    <head>
+        <meta charset="utf-8">
+        <title>listener Example</title>
+    </head>
+    <body>
+        <div id="div1" style="border:1px solid red;width:200px;height:200px;text-align:center">
+            DIV1
+            <div id="div2" style="border:1px solid black;width:150px;height:150px;margin:0 auto ">DIV2</div>
+        </div>
+
+        <form action="http://www.baidu.com">
+             <input type="text" id="myinput">
+             <input type="submit" value="submit" id="sub" />
+             <input type="reset" value="reset" id="reset" />
+        </form>
+
+        <!-- <input id="myinput" type="text"/>
+        <textarea id="mytextarea"></textarea> -->
+    </body>
+       <script>
+           document.addEventListener('readystatechange',function(event){
+             console.log(event);
+             console.log(document.readyState)
+           });
+           document.addEventListener('scroll',function(event){
+             console.log(event);
+             console.log('scrolls')
+           });
+           document.addEventListener('hashchange',function(event){
+             console.log(event);
+             console.log('hashchange')
+           });
+
+           window.onbeforeunload=function(){
+               return "确定关闭吗？"
+           }
+
+           document.getElementById("myinput").addEventListener('focus',function(event){
+              console.log('focus')
+           })
+           document.getElementById("myinput").addEventListener('blur',function(event){
+              console.log('blur')
+           })
+           document.body.addEventListener('focus',function(){
+               console.log("body blur")
+           },true)
+        //    document.getElementById("myinput").addEventListener("input",function(){
+        //        console.log(document.getElementById("myinput").value)
+        //    })
+        //    document.getElementById("mytextarea").addEventListener("change",function(){
+        //        console.log(document.getElementById("mytextarea").value)
+        //    })
+           function eventTest(event){
+               console.log(event)
+           }
+        //    var div1=document.getElementById('div1');
+        //    div1.addEventListener('mouseover',eventTest)
+
+        //    var div2=document.getElementById('div2');
+        //    div2.addEventListener('click',function(){alert('div2!');})
+
+        //    window.addEventListener('keypress',function(event){
+        //        console.log(event)
+        //    })
+
+           //js代码触发事件（基础）
+           // var el=new Event('click')
+           // div1.dispatchEvent(el)
+          
+          //js触发（带属性的）事件
+            // var e2=new Event('click',{'bubbles':false})
+            // div2.dispatchEvent(e2)
+            // console.log(e2)
+
+           //div1.removeEventListener('click',eventTest)
+
+        //    document.getElementById("sub").addEventListener('click',function(event){
+        //      console.log(event)
+        //      取消默认动作
+        //      event.preventDefault()
+
+        //    })
+
+        // var xhr=new XMLHttpRequest();
+        // var url="http://www.baidu.com1";
+        // xhr.open("GET",url,true);
+        // xhr.timeout=10000;
+        // xhr.onabort=function(){
+        //     alert("xhr abort!")
+        // }
+        // xhr.ontimeout=function(){
+        //     alert("xhr timeout")
+        // }
+        // xhr.onprogress=function(event){
+        //     console.log(event)
+        // }
+        // xhr.send();
+        //xhr.abort()
+
+        
+       </script>
+</html>

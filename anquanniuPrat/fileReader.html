@@ -1,0 +1,31 @@
+<html>
+    <body>
+        <form name="tf">
+            <input name="file" type="file">
+        </form>
+        <div id="preview"></div>
+    </body>
+    <script type="text/javascript">
+    //  文本预览+图片预览
+    var fr=new FileReader();
+       document.tf.file.addEventListener("change",function(event){
+           var f=this.files[0];
+           var type=f.type.split("/")[0];
+            if(type=='text'){
+                fr.readAsText(f);
+                fr.onload=function(e){
+                    preview.innerText=e.target.result;
+                }
+            }else if(type=='image'){
+                fr.readAsDataURL(f);
+                fr.onload=function(e){
+                    var img=new Image();
+                    img.src=e.target.result;
+                    preview.appendChild(img);
+                }
+            }else{
+               console.log("不支持！")
+            }
+       })
+    </script>
+</html>

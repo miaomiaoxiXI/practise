@@ -1,0 +1,36 @@
+<html>
+    <head>
+        <style type="text/css">
+          .selected{
+              background: blue;
+          }
+        </style>
+    </head>
+    <body>
+        <ul id="ul">
+            <li>面包</li>
+            <li>牛奶</li>
+            <li>巧克力</li>
+            <li>水</li>
+        </ul>
+        <script>
+                var lastClick=null;
+                ul.addEventListener("click",function(e){
+                   if(e.target.tagName=='LI'){
+                    //    for(var li of ul.children){ //在点击之前全部取消高亮(元素較少時)
+                    //        li.setAttribute("class","")
+                    //    }
+                        if(lastClick==null){
+                            lastClick=e.target;
+                            e.target.setAttribute("class","selected")
+                        }
+                        if(e.target != lastClick){
+                            lastClick.setAttribute("class","")
+                            lastClick=e.target;
+                            e.target.setAttribute("class","selected")
+                        }
+                   }
+                })
+             </script>
+    </body>
+</html>
